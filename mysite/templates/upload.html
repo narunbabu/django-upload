@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Upload</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="document" />
+  <button type="submit">Upload file</button>
+</form>
+{% if url %}
+<p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+
+{% endif %} {% if plot_div %}
+<!-- <b>Chart</b>
+<hr /> -->
+<!-- <img
+  class="card-img-bottom"
+  src="data:image/png;base64, {{chart|safe}}"
+  alt="Card image cap"
+  id="img"
+/> -->
+
+<!-- {% autoescape off %} -->
+<div>{{ plot_div }}</div>
+<!-- {% endautoescape %} -->
+
+<!-- <img
+  src="data:image/png;base64, {{chart|safe}}"
+  style="height: 100%; width: 100%; border-radius: 5%"
+  alt=""
+  id="img"
+/> -->
+{% endif %} {% endblock %}
